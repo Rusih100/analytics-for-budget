@@ -1,10 +1,22 @@
 from google_sheets_api import Sheets_API
+from datetime import datetime
+from pytz import timezone
 
 
 class Table(Sheets_API):
     """
     Класс для работы с таблицами аналитики
     """
+
+    @staticmethod
+    def get_now_time():
+        """
+        Возвращает строку текущей даты
+        """
+        zone = timezone('Asia/Vladivostok')
+        now_time = datetime.now(zone)
+        result = now_time.strftime('%d.%m.%Y')
+        return str(result)
 
     # Получение данных с таблиц
 
@@ -30,8 +42,22 @@ class Table(Sheets_API):
 
     # Добавление данных в таблицы
 
-    def append_expense(self):
+    def append_expense(
+            self, category: str, expense_name: str, amount_expenses: int, comment: str = '', user: str = ''
+    ):
         """
         Добавляет данные о трате
         """
-        pass
+        data = [
+            [
+                self.get_max_id() + 1,
+                self.get_now_time(),
+                '',
+                category,
+                expense_name,
+                amount_expenses,
+                comment,
+                user
+            ]
+        ]
+        return self.append_data('input-api!A2:H', data)

@@ -52,7 +52,7 @@ class Sheets_API:
         request = self.__service.spreadsheets().values().append(
             spreadsheetId=self.__spreadheet_id,
             range=table_range,
-            valueInputOption='RAW',
+            valueInputOption='USER_ENTERED',
             body={
                 'values': data
             }
