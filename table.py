@@ -13,3 +13,4 @@ class Table(Sheets_API):
         values = self.get_data('settings!G2')
         max_id = int(values['values'][0][0])
         return max_id
+
