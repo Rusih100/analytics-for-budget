@@ -1,1 +1,1 @@
-from .google_sheets_api import Sheets_API
+from .google_sheets_api import SheetsAPI

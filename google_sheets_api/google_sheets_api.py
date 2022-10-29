@@ -5,7 +5,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 from typing import List
 
 
-class Sheets_API:
+class SheetsAPI:
     """
     Небольшая обертка для работы с API Google Sheets
     """
